@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Breanna Account</title>
+
+<script src="bank.js"></script>
+
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#1e3c72;
+color:white;
+}
+
+.card{
+
+background:white;
+color:black;
+padding:30px;
+margin:50px auto;
+width:300px;
+border-radius:20px;
+
+}
+
+.money{
+
+font-size:30px;
+color:green;
+
+}
+
+input,button{
+
+padding:12px;
+margin:5px;
+
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+<h1>Breanna></h1>
+
+
+<h2>
+Credits:
+<span id="credits"></span>
+</h2>
+
+
+<h2>
+Money:
+$<span id="money"></span>
+</h2>
+
+
+
+<hr>
+
+
+<h3>
+Credits → Money
+</h3>
+
+
+<input id="convertMoney" type="number">
+
+
+<button onclick="convertMoney()">
+Convert
+</button>
+
+
+
+<h3>
+Money → Credits
+</h3>
+
+
+<input id="convertCredits" type="number">
+
+
+<button onclick="convertCredits()">
+Convert
+</button>
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+let person="Breanna";
+
+
+function update(){
+
+document.getElementById("credits").innerHTML=
+family[person].credits;
+
+
+document.getElementById("money").innerHTML=
+family[person].money;
+
+
+}
+
+
+function convertMoney(){
+
+let amount=
+Number(document.getElementById("convertMoney").value);
+
+
+if(creditsToMoney(person,amount))
+update();
+
+else
+alert("Not enough credits");
+
+
+}
+
+
+
+function convertCredits(){
+
+let amount=
+Number(document.getElementById("convertCredits").value);
+
+
+if(moneyToCredits(person,amount))
+update();
+
+else
+alert("Not enough money");
+
+
+}
+
+
+update();
+
+
+</script>
+
+
+</body>
+
+</html>
