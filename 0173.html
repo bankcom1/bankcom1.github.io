@@ -138,16 +138,34 @@ button{
 </button>
 
 <script>
+
+let credits = JSON.parse(localStorage.getItem("credits")) || {
+    Sean: 0,
+    Breanna: 0,
+    Grayson: 0,
+    Willow: 0
+};
+
+
 function changeCredits(person, amount){
+
+    credits[person] += amount;
+
+    localStorage.setItem(
+        "credits",
+        JSON.stringify(credits)
+    );
+
     alert(
         (amount > 0 ? "Added " : "Removed ") +
         Math.abs(amount) +
-        " credit for " +
+        " credit(s) for " +
         person +
-        ".\n\nSaving will be added next."
+        ".\n\nNew balance: " +
+        credits[person]
     );
 }
-</script>
 
+</script>
 </body>
 </html>
