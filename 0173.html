@@ -55,6 +55,21 @@ h1{
     margin-bottom:20px;
 }
 
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    border:2px solid #ccc;
+    border-radius:10px;
+    text-align:center;
+    font-size:17px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#2a5298;
+}
+
 button{
     width:100%;
     margin:6px 0;
@@ -109,26 +124,30 @@ button{
 
     <div class="card">
         <h2>Sean</h2>
-        <button class="add" onclick="changeCredits('Sean',1)">+1 Credit</button>
-        <button class="remove" onclick="changeCredits('Sean',-1)">-1 Credit</button>
+        <input type="number" id="SeanAmount" placeholder="Credits" min="1">
+        <button class="add" onclick="changeCredits('Sean', true)">Add Credits</button>
+        <button class="remove" onclick="changeCredits('Sean', false)">Remove Credits</button>
     </div>
 
     <div class="card">
         <h2>Breanna</h2>
-        <button class="add" onclick="changeCredits('Breanna',1)">+1 Credit</button>
-        <button class="remove" onclick="changeCredits('Breanna',-1)">-1 Credit</button>
+        <input type="number" id="BreannaAmount" placeholder="Credits" min="1">
+        <button class="add" onclick="changeCredits('Breanna', true)">Add Credits</button>
+        <button class="remove" onclick="changeCredits('Breanna', false)">Remove Credits</button>
     </div>
 
     <div class="card">
         <h2>Grayson</h2>
-        <button class="add" onclick="changeCredits('Grayson',1)">+1 Credit</button>
-        <button class="remove" onclick="changeCredits('Grayson',-1)">-1 Credit</button>
+        <input type="number" id="GraysonAmount" placeholder="Credits" min="1">
+        <button class="add" onclick="changeCredits('Grayson', true)">Add Credits</button>
+        <button class="remove" onclick="changeCredits('Grayson', false)">Remove Credits</button>
     </div>
 
     <div class="card">
         <h2>Willow</h2>
-        <button class="add" onclick="changeCredits('Willow',1)">+1 Credit</button>
-        <button class="remove" onclick="changeCredits('Willow',-1)">-1 Credit</button>
+        <input type="number" id="WillowAmount" placeholder="Credits" min="1">
+        <button class="add" onclick="changeCredits('Willow', true)">Add Credits</button>
+        <button class="remove" onclick="changeCredits('Willow', false)">Remove Credits</button>
     </div>
 
 </div>
@@ -146,26 +165,61 @@ let credits = JSON.parse(localStorage.getItem("credits")) || {
     Willow: 0
 };
 
-
-function changeCredits(person, amount){
-
-    credits[person] += amount;
-
-    localStorage.setItem(
-        "credits",
-        JSON.stringify(credits)
-    );
-
-    alert(
-        (amount > 0 ? "Added " : "Removed ") +
-        Math.abs(amount) +
-        " credit(s) for " +
-        person +
-        ".\n\nNew balance: " +
-        credits[person]
-    );
+function saveCredits() {
+    localStorage.setItem("credits", JSON.stringify(credits));
 }
 
+function changeCredits(person, add) {
+
+    const input = document.getElementById(person + "Amount");
+    let amount = parseInt(input.value);
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid number greater than 0.");
+        return;
+    }
+
+    if (add) {
+        credits[person] += amount;
+    } else {
+        credits[person] -= amount;
+    }
+
+    saveCredits();
+
+    alert(
+        (add ? "Added " : "Removed ") +
+        amount +
+        " credits " +
+        (add ? "to " : "from ") +
+        person +
+        ".\n\nNew Balance: " +
+        credits[person]
+    );
+
+    input.value = "";
+}
+
+function setupEnter(person) {
+
+    const input = document.getElementById(person + "Amount");
+
+    input.addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            changeCredits(person, true);
+        }
+
+    });
+
+}
+
+setupEnter("Sean");
+setupEnter("Breanna");
+setupEnter("Grayson");
+setupEnter("Willow");
+
 </script>
+
 </body>
 </html>
