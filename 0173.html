@@ -1,80 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FC Center - Control Panel</title>
+
+<style>
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body {
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    min-height:100vh;
+}
+
+h1 {
+    text-align:center;
+    color:white;
+    padding:30px;
+}
+
+.people {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.card {
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.card h2 {
+    color:#1e3c72;
+}
+
+.balance {
+    font-size:30px;
+    font-weight:bold;
+    margin:15px;
+    color:#2ecc71;
+}
+
+input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border-radius:10px;
+    border:1px solid gray;
+    text-align:center;
+}
+
+button {
+    width:100%;
+    padding:12px;
+    margin:5px 0;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.add {
+    background:#2ecc71;
+}
+
+.remove {
+    background:#e74c3c;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>FC Center Control Panel</h1>
+
+
+<div class="people">
+
+
+<div class="card">
+<h2>Sean</h2>
+<div class="balance">
+<span id="SeanBalance">0</span>
+</div>
+
+<input id="SeanAmount" type="number" placeholder="Amount">
+
+<button class="add" onclick="changeCredits('Sean', true)">
+Add Credits
+</button>
+
+<button class="remove" onclick="changeCredits('Sean', false)">
+Remove Credits
+</button>
+
+</div>
+
+
+
+<div class="card">
+<h2>Breanna</h2>
+<div class="balance">
+<span id="BreannaBalance">0</span>
+</div>
+
+<input id="BreannaAmount" type="number" placeholder="Amount">
+
+<button class="add" onclick="changeCredits('Breanna', true)">
+Add Credits
+</button>
+
+<button class="remove" onclick="changeCredits('Breanna', false)">
+Remove Credits
+</button>
+
+</div>
+
+
+
+<div class="card">
+<h2>Grayson</h2>
+<div class="balance">
+<span id="GraysonBalance">0</span>
+</div>
+
+<input id="GraysonAmount" type="number" placeholder="Amount">
+
+<button class="add" onclick="changeCredits('Grayson', true)">
+Add Credits
+</button>
+
+<button class="remove" onclick="changeCredits('Grayson', false)">
+Remove Credits
+</button>
+
+</div>
+
+
+
+<div class="card">
+<h2>Willow</h2>
+<div class="balance">
+<span id="WillowBalance">0</span>
+</div>
+
+<input id="WillowAmount" type="number" placeholder="Amount">
+
+<button class="add" onclick="changeCredits('Willow', true)">
+Add Credits
+</button>
+
+<button class="remove" onclick="changeCredits('Willow', false)">
+Remove Credits
+</button>
+
+</div>
+
+
+</div>
+
+
+
 <script>
 
 let credits = JSON.parse(localStorage.getItem("credits")) || {
-    Sean: 0,
-    Breanna: 0,
-    Grayson: 0,
-    Willow: 0
+    Sean:0,
+    Breanna:0,
+    Grayson:0,
+    Willow:0
 };
 
-function saveCredits() {
+
+function saveCredits(){
     localStorage.setItem("credits", JSON.stringify(credits));
 }
 
-function updateBalances() {
+
+function updateBalances(){
+
     document.getElementById("SeanBalance").textContent = credits.Sean;
     document.getElementById("BreannaBalance").textContent = credits.Breanna;
     document.getElementById("GraysonBalance").textContent = credits.Grayson;
     document.getElementById("WillowBalance").textContent = credits.Willow;
+
 }
 
-function changeCredits(person, add) {
 
-    const input = document.getElementById(person + "Amount");
-    let amount = parseInt(input.value);
+function changeCredits(person, add){
 
-    if (isNaN(amount) || amount <= 0) {
-        alert("Please enter a valid number greater than 0.");
-        input.focus();
+    let input = document.getElementById(person + "Amount");
+
+    let amount = Number(input.value);
+
+
+    if(amount <= 0 || isNaN(amount)){
+        alert("Enter a valid amount");
         return;
     }
 
-    if (add) {
+
+    if(add){
         credits[person] += amount;
-    } else {
+    }
+    else{
         credits[person] -= amount;
     }
+
 
     saveCredits();
     updateBalances();
 
-    alert(
-        (add ? "Added " : "Removed ") +
-        amount +
-        " credit" +
-        (amount !== 1 ? "s" : "") +
-        " " +
-        (add ? "to " : "from ") +
-        person +
-        ".\n\nNew Balance: " +
-        credits[person]
-    );
-
-    input.value = "";
-    input.focus();
-}
-
-function setupEnter(person) {
-
-    const input = document.getElementById(person + "Amount");
-
-    input.addEventListener("keydown", function(event) {
-
-        if (event.key === "Enter") {
-            event.preventDefault();
-            changeCredits(person, true);
-        }
-
-    });
+    input.value="";
 
 }
 
-setupEnter("Sean");
-setupEnter("Breanna");
-setupEnter("Grayson");
-setupEnter("Willow");
 
-// Show balances immediately when the page loads
-updateBalances();
+
+window.onload=function(){
+
+    updateBalances();
+
+};
+
 
 </script>
+
+
+</body>
+</html>
