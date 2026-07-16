@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FC Center - Control Panel</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    color:white;
+}
+
+header{
+    text-align:center;
+    padding:30px;
+}
+
+h1{
+    font-size:42px;
+}
+
+.subtitle{
+    margin-top:10px;
+    opacity:.8;
+}
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:25px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    color:black;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.card h2{
+    color:#1e3c72;
+    margin-bottom:20px;
+}
+
+button{
+    width:100%;
+    margin:6px 0;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    font-size:17px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.add{
+    background:#2ecc71;
+    color:white;
+}
+
+.add:hover{
+    background:#27ae60;
+}
+
+.remove{
+    background:#e74c3c;
+    color:white;
+}
+
+.remove:hover{
+    background:#c0392b;
+}
+
+.back{
+    display:block;
+    width:250px;
+    margin:30px auto;
+    background:#34495e;
+    color:white;
+}
+
+.back:hover{
+    background:#2c3e50;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>FC Center</h1>
+    <div class="subtitle">Control Panel</div>
+</header>
+
+<div class="people">
+
+    <div class="card">
+        <h2>Sean</h2>
+        <button class="add" onclick="changeCredits('Sean',1)">+1 Credit</button>
+        <button class="remove" onclick="changeCredits('Sean',-1)">-1 Credit</button>
+    </div>
+
+    <div class="card">
+        <h2>Breanna</h2>
+        <button class="add" onclick="changeCredits('Breanna',1)">+1 Credit</button>
+        <button class="remove" onclick="changeCredits('Breanna',-1)">-1 Credit</button>
+    </div>
+
+    <div class="card">
+        <h2>Grayson</h2>
+        <button class="add" onclick="changeCredits('Grayson',1)">+1 Credit</button>
+        <button class="remove" onclick="changeCredits('Grayson',-1)">-1 Credit</button>
+    </div>
+
+    <div class="card">
+        <h2>Willow</h2>
+        <button class="add" onclick="changeCredits('Willow',1)">+1 Credit</button>
+        <button class="remove" onclick="changeCredits('Willow',-1)">-1 Credit</button>
+    </div>
+
+</div>
+
+<button class="back" onclick="window.location.href='index.html'">
+    Back to Home
+</button>
+
+<script>
+function changeCredits(person, amount){
+    alert(
+        (amount > 0 ? "Added " : "Removed ") +
+        Math.abs(amount) +
+        " credit for " +
+        person +
+        ".\n\nSaving will be added next."
+    );
+}
+</script>
+
+</body>
+</html>
