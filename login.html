@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>FC Center Login</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+padding-top:100px;
+}
+
+input,button{
+padding:15px;
+font-size:18px;
+margin:10px;
+}
+
+button{
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>FC Center</h1>
+
+<h2>Account Login</h2>
+
+
+<input id="pass" placeholder="Password" type="password">
+
+
+<br>
+
+
+<button onclick="login()">
+Login
+</button>
+
+
+
+<script>
+
+function login(){
+
+let p=document.getElementById("pass").value;
+
+
+let accounts={
+
+"hh1s":"qzmtp.html",
+"jh3d":"hepre.html",
+"hdi5":"ndjcd.html",
+"kl2g":"jdnef.html"
+
+};
+
+
+if(accounts[p]){
+
+window.location.href=accounts[p];
+
+}
+
+else{
+
+alert("Incorrect password");
+
+}
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
