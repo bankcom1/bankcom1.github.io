@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Site Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        input:focus {
+            border-color: #2a5298;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background: #2a5298;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        #message {
+            color: red;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+
+        .back {
+            margin-top: 20px;
+            color: #2a5298;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .back:hover {
+            color: #1e3c72;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Control Site</h1>
+
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <button onclick="login()">Enter</button>
+
+    <div id="message"></div>
+
+    <div class="back" onclick="window.location.href='index.html'">
+        ← Back to Home
+    </div>
+</div>
+
+<script>
+function login() {
+    const password = document.getElementById("password").value;
+
+    if (password === "0173") {
+        window.location.href = "0173.html";
+    } else {
+        document.getElementById("message").textContent = "Incorrect password.";
+    }
+}
+
+document.getElementById("password").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        login();
+    }
+});
+</script>
+
+</body>
+</html>
