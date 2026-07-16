@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FC Center - Credits</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    min-height:100vh;
+    color:white;
+}
+
+header{
+    text-align:center;
+    padding:35px;
+}
+
+h1{
+    font-size:40px;
+}
+
+.subtitle{
+    margin-top:10px;
+    opacity:.8;
+}
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    color:black;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.card h2{
+    color:#1e3c72;
+    margin-bottom:15px;
+}
+
+.credits{
+    font-size:30px;
+    font-weight:bold;
+    color:#2ecc71;
+}
+
+button{
+    display:block;
+    margin:30px auto;
+    width:250px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#34495e;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2c3e50;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>FC Center</h1>
+    <div class="subtitle">Credits of People</div>
+</header>
+
+
+<div class="people">
+
+    <div class="card">
+        <h2>Sean</h2>
+        <div class="credits" id="Sean">
+            0
+        </div>
+        <p>Credits</p>
+    </div>
+
+    <div class="card">
+        <h2>Breanna</h2>
+        <div class="credits" id="Breanna">
+            0
+        </div>
+        <p>Credits</p>
+    </div>
+
+    <div class="card">
+        <h2>Grayson</h2>
+        <div class="credits" id="Grayson">
+            0
+        </div>
+        <p>Credits</p>
+    </div>
+
+    <div class="card">
+        <h2>Willow</h2>
+        <div class="credits" id="Willow">
+            0
+        </div>
+        <p>Credits</p>
+    </div>
+
+</div>
+
+
+<button onclick="window.location.href='index.html'">
+    Back to Home
+</button>
+
+
+</body>
+</html>
