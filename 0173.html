@@ -19,15 +19,22 @@
     font-family:Arial, sans-serif;
 }
 
+
 body{
+
     background:linear-gradient(135deg,#1e3c72,#2a5298);
     min-height:100vh;
+
 }
 
+
 h1{
+
     text-align:center;
     color:white;
     padding:30px;
+    font-size:40px;
+
 }
 
 
@@ -36,9 +43,10 @@ h1{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:20px;
-    padding:20px;
+    padding:25px;
 
 }
+
 
 
 .card{
@@ -52,12 +60,14 @@ h1{
 }
 
 
+
 .card h2{
 
     color:#1e3c72;
     margin-bottom:15px;
 
 }
+
 
 
 .balance{
@@ -70,6 +80,7 @@ h1{
 }
 
 
+
 .money{
 
     font-size:22px;
@@ -79,17 +90,19 @@ h1{
 }
 
 
+
 input{
 
     width:100%;
     padding:12px;
+    margin:7px 0;
     border-radius:10px;
-    border:1px solid gray;
+    border:1px solid #aaa;
     text-align:center;
-    font-size:17px;
-    margin-bottom:10px;
+    font-size:16px;
 
 }
+
 
 
 button{
@@ -106,11 +119,13 @@ button{
 }
 
 
+
 .add{
 
     background:#2ecc71;
 
 }
+
 
 
 .remove{
@@ -120,14 +135,24 @@ button{
 }
 
 
-.back{
 
-    background:#34495e;
-    width:250px;
-    display:block;
-    margin:30px auto;
+.history{
+
+    background:#8e44ad;
 
 }
+
+
+
+.back{
+
+    display:block;
+    width:250px;
+    margin:30px auto;
+    background:#34495e;
+
+}
+
 
 
 </style>
@@ -143,6 +168,7 @@ FC Center Control Panel
 </h1>
 
 
+
 <div class="people">
 
 
@@ -152,27 +178,40 @@ FC Center Control Panel
 <h2>Sean</h2>
 
 <div class="balance">
-Credits: <span id="SeanCredits">0</span>
+Credits:
+<span id="SeanCredits">0</span>
 </div>
 
 <div class="money">
-Money: $<span id="SeanMoney">0</span>
+Money:
+$<span id="SeanMoney">0</span>
 </div>
 
-<input id="SeanAmount" type="number" placeholder="Credit amount">
+
+<input 
+id="SeanAmount"
+type="number"
+placeholder="Credit Amount">
 
 
-<button class="add" onclick="changeCredits('Sean', true)">
+<input
+id="SeanReason"
+type="text"
+placeholder="Reason">
+
+
+<button class="add" onclick="changeCredits('Sean',true)">
 Add Credits
 </button>
 
 
-<button class="remove" onclick="changeCredits('Sean', false)">
+<button class="remove" onclick="changeCredits('Sean',false)">
 Remove Credits
 </button>
 
 
 </div>
+
 
 
 
@@ -182,59 +221,79 @@ Remove Credits
 <h2>Breanna</h2>
 
 <div class="balance">
-Credits: <span id="BreannaCredits">0</span>
+Credits:
+<span id="BreannaCredits">0</span>
 </div>
+
 
 <div class="money">
-Money: $<span id="BreannaMoney">0</span>
+Money:
+$<span id="BreannaMoney">0</span>
 </div>
 
-<input id="BreannaAmount" type="number" placeholder="Credit amount">
+
+<input 
+id="BreannaAmount"
+type="number"
+placeholder="Credit Amount">
 
 
-<button class="add" onclick="changeCredits('Breanna', true)">
+<input
+id="BreannaReason"
+type="text"
+placeholder="Reason">
+
+
+<button class="add" onclick="changeCredits('Breanna',true)">
 Add Credits
 </button>
 
 
-<button class="remove" onclick="changeCredits('Breanna', false)">
+<button class="remove" onclick="changeCredits('Breanna',false)">
 Remove Credits
 </button>
 
 
 </div>
-
-
-
-
-
 <div class="card">
 
 <h2>Grayson</h2>
 
 <div class="balance">
-Credits: <span id="GraysonCredits">0</span>
+Credits:
+<span id="GraysonCredits">0</span>
 </div>
+
 
 <div class="money">
-Money: $<span id="GraysonMoney">0</span>
+Money:
+$<span id="GraysonMoney">0</span>
 </div>
 
-<input id="GraysonAmount" type="number" placeholder="Credit amount">
+
+<input 
+id="GraysonAmount"
+type="number"
+placeholder="Credit Amount">
 
 
-<button class="add" onclick="changeCredits('Grayson', true)">
+<input
+id="GraysonReason"
+type="text"
+placeholder="Reason">
+
+
+<button class="add" onclick="changeCredits('Grayson',true)">
 Add Credits
 </button>
 
 
-<button class="remove" onclick="changeCredits('Grayson', false)">
+<button class="remove" onclick="changeCredits('Grayson',false)">
 Remove Credits
 </button>
 
 
 </div>
-
 
 
 
@@ -245,22 +304,35 @@ Remove Credits
 <h2>Willow</h2>
 
 <div class="balance">
-Credits: <span id="WillowCredits">0</span>
+Credits:
+<span id="WillowCredits">0</span>
 </div>
+
 
 <div class="money">
-Money: $<span id="WillowMoney">0</span>
+Money:
+$<span id="WillowMoney">0</span>
 </div>
 
-<input id="WillowAmount" type="number" placeholder="Credit amount">
+
+<input 
+id="WillowAmount"
+type="number"
+placeholder="Credit Amount">
 
 
-<button class="add" onclick="changeCredits('Willow', true)">
+<input
+id="WillowReason"
+type="text"
+placeholder="Reason">
+
+
+<button class="add" onclick="changeCredits('Willow',true)">
 Add Credits
 </button>
 
 
-<button class="remove" onclick="changeCredits('Willow', false)">
+<button class="remove" onclick="changeCredits('Willow',false)">
 Remove Credits
 </button>
 
@@ -268,13 +340,17 @@ Remove Credits
 </div>
 
 
-
 </div>
 
 
 
+<button class="history" onclick="location.href='transactionhistory.html'">
+Transaction History
+</button>
+
+
 <button class="back" onclick="location.href='index.html'">
-Back to Home
+Back To Home
 </button>
 
 
@@ -286,11 +362,11 @@ Back to Home
 function updateBalances(){
 
 
-let people=[
-"Sean",
-"Breanna",
-"Grayson",
-"Willow"
+let people = [
+    "Sean",
+    "Breanna",
+    "Grayson",
+    "Willow"
 ];
 
 
@@ -313,21 +389,31 @@ family[person].money;
 
 
 
-function changeCredits(person, add){
+
+function changeCredits(person,add){
 
 
-let input =
+let amountInput =
 document.getElementById(person+"Amount");
 
 
+let reasonInput =
+document.getElementById(person+"Reason");
+
+
+
 let amount =
-Number(input.value);
+Number(amountInput.value);
+
+
+let reason =
+reasonInput.value.trim();
 
 
 
 if(amount <= 0 || isNaN(amount)){
 
-alert("Enter a valid amount.");
+alert("Enter a valid credit amount.");
 
 return;
 
@@ -335,17 +421,50 @@ return;
 
 
 
+if(reason === ""){
+
+alert("Enter a reason.");
+
+return;
+
+}
+
+
+
+
 if(add){
+
 
 family[person].credits += amount;
 
+
+addTransaction(
+    person,
+    "Added Credits",
+    amount,
+    reason
+);
+
+
 }
+
 
 else{
 
+
 family[person].credits -= amount;
 
+
+addTransaction(
+    person,
+    "Removed Credits",
+    amount,
+    reason
+);
+
+
 }
+
 
 
 
@@ -354,10 +473,16 @@ saveBank();
 updateBalances();
 
 
-input.value="";
+
+amountInput.value="";
+reasonInput.value="";
+
 
 
 }
+
+
+
 
 
 
@@ -369,10 +494,12 @@ let input =
 document.getElementById(person+"Amount");
 
 
-input.addEventListener("keydown",function(event){
+input.addEventListener(
+"keydown",
+function(event){
 
 
-if(event.key==="Enter"){
+if(event.key === "Enter"){
 
 changeCredits(person,true);
 
@@ -383,6 +510,9 @@ changeCredits(person,true);
 
 
 }
+
+
+
 
 
 
@@ -400,7 +530,6 @@ setupEnter("Willow");
 
 
 };
-
 
 
 </script>
