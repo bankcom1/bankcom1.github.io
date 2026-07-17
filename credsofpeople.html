@@ -133,20 +133,22 @@ button:hover{
 </button>
 
 
+<script src="bank.js"></script>
+
 <script>
 
-let credits = JSON.parse(localStorage.getItem("credits")) || {
-    Sean: 0,
-    Breanna: 0,
-    Grayson: 0,
-    Willow: 0
-};
+document.getElementById("Sean").innerHTML =
+family.Sean.credits;
 
+document.getElementById("Breanna").innerHTML =
+family.Breanna.credits;
 
-document.getElementById("Sean").textContent = credits.Sean;
-document.getElementById("Breanna").textContent = credits.Breanna;
-document.getElementById("Grayson").textContent = credits.Grayson;
-document.getElementById("Willow").textContent = credits.Willow;
+document.getElementById("Grayson").innerHTML =
+family.Grayson.credits;
+
+document.getElementById("Willow").innerHTML =
+family.Willow.credits;
+
 
 </script>
 
